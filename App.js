@@ -1,16 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StackNavigator, TabNavigator } from "react-navigation";
+import AddDeck from "./components/AddDeck";
 
 const Decks = () => (
   <View>
     <Text>All Decks</Text>
-  </View>
-);
-
-const AddDeck = () => (
-  <View>
-    <Text>Add Deck</Text>
   </View>
 );
 
