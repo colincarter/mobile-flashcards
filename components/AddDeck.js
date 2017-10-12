@@ -1,35 +1,43 @@
 import React from "react";
 import { View, Text, TextInput, AsyncStorage, Button } from "react-native";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as actionCreators from "../actions";
+import { DeckStorage } from "../lib/storage";
 
-export default class AddDeck extends React.Component {
-  deckKey = "decks";
-
+class AddDeck extends React.Component {
   state = {
     text: ""
   };
 
-  onChangeText = ({ text }) => {
+  onChangeText = text => {
     this.setState({ text });
   };
 
-  onButtonPress = async () => {
-    let decks = await AsyncStorage.getItem(this.deckKey);
-    if (decks === null) {
-      decks = [];
-    } else {
-      decks = JSON.parse(decks);
-    }
-    const newDecks = [...decks, this.state.text];
-    await AsyncStorage.setItem(JSON.stringify(this.deckKey, newDecks));
+  onButtonPress = () => {
+    this.props.addDeck(this.state.text);
+    this.setState({ text: "" });
+    this._textInput.setNativeProps({ text: "" });
+    this.props.navigation.goBack(null);
   };
 
   render() {
     return (
       <View>
         <Text>Add Deck</Text>
-        <TextInput placeholder="Deck name" onChangeText={this.onChangeText} />
+        <TextInput
+          placeholder="Deck name"
+          onChangeText={this.onChangeText}
+          ref={component => (this._textInput = component)}
+        />
         <Button onPress={this.onButtonPress} title="Add Deck" />
       </View>
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(AddDeck);

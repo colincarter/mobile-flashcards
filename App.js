@@ -1,13 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Provider } from "react-redux";
+import { StyleSheet, Text, View, AsyncStorage } from "react-native";
 import { StackNavigator, TabNavigator } from "react-navigation";
-import AddDeck from "./components/AddDeck";
 
-const Decks = () => (
-  <View>
-    <Text>All Decks</Text>
-  </View>
-);
+import AddDeck from "./components/AddDeck";
+import Decks from "./components/Decks";
+import Deck from "./components/Deck";
+
+import { DecksStorage } from "./lib/storage";
+import configureStore from "./store/configureStore";
+import defaultState from "./store/defaultState";
 
 const Tabs = TabNavigator({
   Decks: {
@@ -30,12 +32,16 @@ const MainNavigation = StackNavigator({
   }
 });
 
+const store = configureStore(defaultState);
+
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <MainNavigation />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <MainNavigation />
+        </View>
+      </Provider>
     );
   }
 }
