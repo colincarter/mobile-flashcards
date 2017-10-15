@@ -1,5 +1,6 @@
 const defaultState = {
-  decks: []
+  decks: [],
+  cards: {}
 };
 
 export default defaultState;
