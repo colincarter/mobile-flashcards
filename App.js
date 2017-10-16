@@ -6,7 +6,7 @@ import { StackNavigator, TabNavigator } from "react-navigation";
 import AddDeck from "./components/AddDeck";
 import Decks from "./components/Decks";
 import Deck from "./components/Deck";
-import DeckList from "./components/DeckList";
+import DeckView from "./components/DeckView";
 
 import { DecksStorage } from "./lib/storage";
 import configureStore from "./store/configureStore";
@@ -31,8 +31,8 @@ const MainNavigation = StackNavigator({
   Home: {
     screen: Tabs
   },
-  DeckList: {
-    screen: DeckList
+  DeckView: {
+    screen: DeckView
   }
 });
 

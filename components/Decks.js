@@ -11,7 +11,7 @@ class Decks extends React.Component {
   };
 
   onPressItem = item => {
-    this.props.navigation.navigate("DeckList", { deckName: item });
+    this.props.navigation.navigate("DeckView", { deckName: item });
   };
 
   renderDeck = ({ item }) => {
