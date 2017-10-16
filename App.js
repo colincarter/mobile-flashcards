@@ -7,6 +7,7 @@ import AddDeck from "./components/AddDeck";
 import Decks from "./components/Decks";
 import Deck from "./components/Deck";
 import DeckView from "./components/DeckView";
+import AddCard from "./components/AddCard";
 
 import { DecksStorage } from "./lib/storage";
 import configureStore from "./store/configureStore";
@@ -33,6 +34,9 @@ const MainNavigation = StackNavigator({
   },
   DeckView: {
     screen: DeckView
+  },
+  AddCard: {
+    screen: AddCard
   }
 });
 
