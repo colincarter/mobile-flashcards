@@ -30,9 +30,9 @@ class AddDeck extends React.Component {
   render = () => {
     return (
       <View>
-        <Text>Add Deck</Text>
+        <Text>What is the title of your new Deck?</Text>
         <TextInput
-          placeholder="Deck name"
+          placeholder="Deck title"
           onChangeText={this.onChangeText}
           ref={component => (this._textInput = component)}
         />
