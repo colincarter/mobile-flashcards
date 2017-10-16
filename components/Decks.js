@@ -1,14 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { connect } from "react-redux";
 import Deck from "./Deck";
 
 class Decks extends React.Component {
+  renderDeck = ({ item }) => {
+    return <Deck name={item} />;
+  };
+
   render() {
     return (
       <View>
-        <Text>All Decks</Text>
-        {this.props.decks.map((deck, i) => <Deck name={deck} key={i} />)}
+        <FlatList data={this.props.decks} renderItem={this.renderDeck} />
       </View>
     );
   }
