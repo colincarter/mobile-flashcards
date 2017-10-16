@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { View, Text, TextInput, AsyncStorage, Button } from "react-native";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -6,6 +7,11 @@ import * as actionCreators from "../actions";
 import { DeckStorage } from "../lib/storage";
 
 class AddDeck extends React.Component {
+  static propTypes = {
+    addDeck: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
+  };
+
   state = {
     text: ""
   };
@@ -21,7 +27,7 @@ class AddDeck extends React.Component {
     this.props.navigation.goBack(null);
   };
 
-  render() {
+  render = () => {
     return (
       <View>
         <Text>Add Deck</Text>
@@ -33,7 +39,7 @@ class AddDeck extends React.Component {
         <Button onPress={this.onButtonPress} title="Add Deck" />
       </View>
     );
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {

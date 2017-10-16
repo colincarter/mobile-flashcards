@@ -1,33 +1,37 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class Deck extends React.Component {
-  onClick = () => {
-    console.log("click");
-    this.props.navigate(this.props.name);
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    cards: PropTypes.object.isRequired,
+    onPressItem: PropTypes.func.isRequired
+  };
+
+  onPress = () => {
+    this.props.onPressItem(this.props.name);
   };
 
   render = () => {
     return (
-      <View style={styles.card} onClick={this.onClick}>
+      <TouchableOpacity
+        style={styles.card}
+        onPress={this.onPress}
+        pointerEvents="auto"
+      >
         <Text style={styles.cardName}>{this.props.name}</Text>
         <Text>{(this.props.cards[this.props.name] || []).length} Cards</Text>
-      </View>
+      </TouchableOpacity>
     );
   };
 }
 
-Deck.propTypes = {
-  name: PropTypes.string.isRequired,
-  cards: PropTypes.object.isRequired
-};
-
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    height: 10
+    height: 50
   },
   cardName: {
     fontSize: 19,
