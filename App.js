@@ -8,6 +8,7 @@ import Decks from "./components/Decks";
 import Deck from "./components/Deck";
 import DeckView from "./components/DeckView";
 import AddCard from "./components/AddCard";
+import Quiz from "./components/Quiz";
 
 import { DecksStorage } from "./lib/storage";
 import configureStore from "./store/configureStore";
@@ -37,6 +38,9 @@ const MainNavigation = StackNavigator({
   },
   AddCard: {
     screen: AddCard
+  },
+  Quiz: {
+    screen: Quiz
   }
 });
 
