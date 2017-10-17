@@ -31,7 +31,9 @@ class DeckView extends React.Component {
     return (
       <View>
         <Text>{deckName}</Text>
-        <Text>{numCards} cards</Text>
+        <Text>
+          {numCards} {numCards == 1 ? "Card" : "Cards"}
+        </Text>
         <Button title="Add Card" onPress={this.addCard} />
         <Button title="Start Quiz" onPress={this.startQuiz} />
       </View>

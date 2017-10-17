@@ -15,6 +15,9 @@ class Deck extends React.Component {
   };
 
   render = () => {
+    const cards = this.props.cards[this.props.name] || [];
+    const numCards = cards.length;
+
     return (
       <TouchableOpacity
         style={styles.card}
@@ -22,7 +25,9 @@ class Deck extends React.Component {
         pointerEvents="auto"
       >
         <Text style={styles.cardName}>{this.props.name}</Text>
-        <Text>{(this.props.cards[this.props.name] || []).length} Cards</Text>
+        <Text>
+          {numCards} {numCards == 1 ? "Card" : "Cards"}
+        </Text>
       </TouchableOpacity>
     );
   };
