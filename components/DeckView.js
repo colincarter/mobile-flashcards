@@ -15,27 +15,39 @@ class DeckView extends React.Component {
     };
   };
 
+  constructor(props) {
+    super(props);
+    this.deckName = this.props.navigation.state.params.deckName;
+  }
+
   addCard = () => {
     this.props.navigation.navigate("AddCard", {
-      deckName: this.props.navigation.state.params.deckName
+      deckName: this.deckName
     });
   };
 
-  startQuiz = () => {};
+  startQuiz = () => {
+    this.props.navigation.navigate("Quiz", {
+      deckName: this.deckName
+    });
+  };
 
   render = () => {
-    const { deckName } = this.props.navigation.state.params;
     const { cards } = this.props;
-    const numCards = (cards[deckName] || []).length;
+    const numCards = (cards[this.deckName] || []).length;
 
     return (
       <View>
-        <Text>{deckName}</Text>
+        <Text>{this.deckName}</Text>
         <Text>
           {numCards} {numCards == 1 ? "Card" : "Cards"}
         </Text>
         <Button title="Add Card" onPress={this.addCard} />
-        <Button title="Start Quiz" onPress={this.startQuiz} />
+        <Button
+          title="Start Quiz"
+          onPress={this.startQuiz}
+          disabled={numCards == 0}
+        />
       </View>
     );
   };
