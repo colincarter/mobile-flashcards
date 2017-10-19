@@ -36,7 +36,11 @@ class AddDeck extends React.Component {
           onChangeText={this.onChangeText}
           ref={component => (this._textInput = component)}
         />
-        <Button onPress={this.onButtonPress} title="Add Deck" />
+        <Button
+          onPress={this.onButtonPress}
+          title="Add Deck"
+          disabled={this.state.text === ""}
+        />
       </View>
     );
   };

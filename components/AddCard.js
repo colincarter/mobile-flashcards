@@ -40,6 +40,8 @@ class AddCard extends React.Component {
 
   render = () => {
     const { deckName } = this.props.navigation.state.params;
+    const submitDisabled =
+      this.state.question === "" || this.state.answer === "";
 
     return (
       <View>
@@ -53,7 +55,11 @@ class AddCard extends React.Component {
           onChangeText={this.onChangeAnswer}
           ref={component => (this._answer = component)}
         />
-        <Button onPress={this.onButtonPress} title="Submit" />
+        <Button
+          onPress={this.onButtonPress}
+          title="Submit"
+          disabled={submitDisabled}
+        />
       </View>
     );
   };
