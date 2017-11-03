@@ -13,6 +13,7 @@ import Quiz from "./components/Quiz";
 import DeckStorage from "./lib/storage";
 import configureStore from "./store/configureStore";
 import defaultState from "./store/defaultState";
+import { addDeck, addCard } from "./actions";
 
 import "./ReactotronConfig";
 
@@ -48,8 +49,18 @@ const MainNavigation = StackNavigator({
 
 const store = configureStore(defaultState);
 
-const decks = new DeckStorage().getDecks();
-store.dispatch(addDecks());
+const ds = new DeckStorage();
+
+ds.getDecks().then(decks => {
+  console.log({ decks });
+
+  for (const deck in decks) {
+    store.dispatch(addDeck(deck.title));
+    for (const question in deck.questions) {
+      store.dispatch(addCard(card, question));
+    }
+  }
+});
 
 export default class App extends React.Component {
   render() {
