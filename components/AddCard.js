@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreators from "../actions";
 import { View, TextInput, Button } from "react-native";
+import DeckStorage from "../lib/storage";
 
 class AddCard extends React.Component {
   static propTypes = {
@@ -31,7 +32,9 @@ class AddCard extends React.Component {
   };
 
   onButtonPress = () => {
-    this.props.addCard(this.props.navigation.state.params.deckName, this.state);
+    const deckName = this.props.navigation.state.params.deckName;
+    this.props.addCard(deckName, this.state);
+    new DeckStorage().addCardToDeck(deckName, this.state);
     this.setState({ question: "", answer: "" });
     this._question.setNativeProps({ text: "" });
     this._answer.setNativeProps({ text: "" });

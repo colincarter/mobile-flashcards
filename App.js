@@ -10,9 +10,11 @@ import DeckView from "./components/DeckView";
 import AddCard from "./components/AddCard";
 import Quiz from "./components/Quiz";
 
-import { DecksStorage } from "./lib/storage";
+import DeckStorage from "./lib/storage";
 import configureStore from "./store/configureStore";
 import defaultState from "./store/defaultState";
+
+import "./ReactotronConfig";
 
 const Tabs = TabNavigator({
   Decks: {
@@ -45,6 +47,9 @@ const MainNavigation = StackNavigator({
 });
 
 const store = configureStore(defaultState);
+
+const decks = new DeckStorage().getDecks();
+store.dispatch(addDecks());
 
 export default class App extends React.Component {
   render() {
