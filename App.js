@@ -49,18 +49,16 @@ const MainNavigation = StackNavigator({
 
 const store = configureStore(defaultState);
 
-const ds = new DeckStorage();
-
-ds.getDecks().then(decks => {
-  console.log({ decks });
-
+const loadDecks = async store => {
+  const ds = new DeckStorage();
+  const decks = await ds.getDecks();
   for (const deck in decks) {
-    store.dispatch(addDeck(deck.title));
-    for (const question in deck.questions) {
-      store.dispatch(addCard(card, question));
-    }
+    store.dispatch(addDeck(deck));
+    decks[deck].questions.forEach(card => store.dispatch(addCard(deck, card)));
   }
-});
+};
+
+loadDecks(store);
 
 export default class App extends React.Component {
   render() {
