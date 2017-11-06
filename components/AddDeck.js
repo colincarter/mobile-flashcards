@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, TextInput, AsyncStorage, Button } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  AsyncStorage,
+  Button,
+  Platform,
+  StyleSheet
+} from "react-native";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
@@ -15,7 +23,11 @@ class AddDeck extends React.Component {
 
   static navigationOptions = {
     tabBarLabel: "Add Deck",
-    tabBarIcon: () => <Ionicons name="ios-add" />
+    tabBarIcon: () => (
+      <Ionicons
+        name={Platform.OS === "ios" ? "ios-add-circle" : "md-add-circle"}
+      />
+    )
   };
 
   state = {
@@ -35,22 +47,42 @@ class AddDeck extends React.Component {
 
   render = () => {
     return (
-      <View>
-        <Text>What is the title of your new Deck?</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>What is the title of your new Deck?</Text>
         <TextInput
           placeholder="Deck title"
           onChangeText={this.onChangeText}
           ref={component => (this._textInput = component)}
+          style={styles.deckName}
         />
         <Button
           onPress={this.onButtonPress}
           title="Add Deck"
           disabled={this.state.text === ""}
+          style={styles.button}
         />
       </View>
     );
   };
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  deckName: {
+    paddingTop: 20,
+    textAlign: "center",
+    height: 20,
+    paddingBottom: 20
+  },
+  button: {}
+});
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
