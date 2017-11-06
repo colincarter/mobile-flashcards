@@ -10,7 +10,11 @@ class Decks extends React.Component {
     navigation: PropTypes.object.isRequired
   };
 
-  onPressItem = item => {
+  static navigationOptions = {
+    tabBarLabel: "Decks"
+  };
+
+  static onPressItem = item => {
     this.props.navigation.navigate("DeckView", { deckName: item });
   };
 

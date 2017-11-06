@@ -16,16 +16,10 @@ import defaultState from "./store/defaultState";
 
 const Tabs = TabNavigator({
   Decks: {
-    screen: Decks,
-    navigationOptions: {
-      tabBarLabel: "Decks"
-    }
+    screen: Decks
   },
   AddDeck: {
-    screen: AddDeck,
-    navigationOptions: {
-      tabBarLabel: "Add Deck"
-    }
+    screen: AddDeck
   }
 });
 

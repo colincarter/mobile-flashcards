@@ -5,11 +5,17 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
 import { DeckStorage } from "../lib/storage";
+import { Ionicons } from "@expo/vector-icons";
 
 class AddDeck extends React.Component {
   static propTypes = {
     addDeck: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired
+  };
+
+  static navigationOptions = {
+    tabBarLabel: "Add Deck",
+    tabBarIcon: () => <Ionicons name="ios-add" />
   };
 
   state = {
