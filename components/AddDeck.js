@@ -49,12 +49,14 @@ class AddDeck extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>What is the title of your new Deck?</Text>
-        <TextInput
-          placeholder="Deck title"
-          onChangeText={this.onChangeText}
-          ref={component => (this._textInput = component)}
-          style={styles.deckName}
-        />
+        <View style={styles.deckNameContainer}>
+          <TextInput
+            placeholder="Deck title"
+            onChangeText={this.onChangeText}
+            ref={component => (this._textInput = component)}
+            style={styles.deckName}
+          />
+        </View>
         <Button
           onPress={this.onButtonPress}
           title="Add Deck"
@@ -76,10 +78,14 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   deckName: {
-    paddingTop: 20,
-    textAlign: "center",
+    marginTop: 20,
+    textAlign: "left",
     height: 20,
-    paddingBottom: 20
+    marginBottom: 20
+  },
+  deckNameContainer: {
+    justifyContent: "center",
+    alignItems: "center"
   },
   button: {}
 });
