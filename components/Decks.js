@@ -14,7 +14,7 @@ class Decks extends React.Component {
     tabBarLabel: "Decks"
   };
 
-  static onPressItem = item => {
+  onPressItem = item => {
     this.props.navigation.navigate("DeckView", { deckName: item });
   };
 
