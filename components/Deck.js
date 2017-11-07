@@ -25,7 +25,7 @@ class Deck extends React.Component {
         pointerEvents="auto"
       >
         <Text style={styles.cardName}>{this.props.name}</Text>
-        <Text>
+        <Text style={styles.numCard}>
           {numCards} {numCards == 1 ? "Card" : "Cards"}
         </Text>
       </TouchableOpacity>
@@ -36,12 +36,19 @@ class Deck extends React.Component {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    height: 50
+    height: 50,
+    borderBottomWidth: 1,
+    borderBottomColor: "gray"
   },
   cardName: {
     fontSize: 19,
-    fontWeight: "bold",
-    alignItems: "center"
+    marginLeft: 10,
+    marginRight: 10
+  },
+  numCard: {
+    paddingTop: 5,
+    marginLeft: 10,
+    marginRight: 10
   }
 });
 
