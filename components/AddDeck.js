@@ -40,6 +40,7 @@ class AddDeck extends React.Component {
 
   onButtonPress = () => {
     this.props.addDeck(this.state.text);
+    new DeckStorage().saveDeckTitle(this.state.text);
     this.setState({ text: "" });
     this._textInput.setNativeProps({ text: "" });
     this.props.navigation.goBack(null);
