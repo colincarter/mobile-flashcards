@@ -5,7 +5,6 @@ import { StackNavigator, TabNavigator } from "react-navigation";
 
 import AddDeck from "./components/AddDeck";
 import Decks from "./components/Decks";
-import Deck from "./components/Deck";
 import DeckView from "./components/DeckView";
 import AddCard from "./components/AddCard";
 import Quiz from "./components/Quiz";
