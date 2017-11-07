@@ -12,7 +12,7 @@ import {
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
-import { DeckStorage } from "../lib/storage";
+import DeckStorage from "../lib/storage";
 import { Ionicons } from "@expo/vector-icons";
 
 class AddDeck extends React.Component {
