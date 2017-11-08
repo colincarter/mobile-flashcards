@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     borderBottomWidth: 1,
-    borderBottomColor: "gray"
+    borderBottomColor: "#d3d3d3"
   },
   cardName: {
     fontSize: 19,
