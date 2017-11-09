@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, FlatList } from "react-native";
 import { List, ListItem } from "react-native-elements";
 
 import { connect } from "react-redux";
@@ -38,10 +38,6 @@ class Decks extends React.Component {
     );
   };
 }
-
-const styles = StyleSheet.create({
-  container: {}
-});
 
 const mapStateToProps = ({ decks }) => ({
   decks
