@@ -21,7 +21,11 @@ class Deck extends React.Component {
     const subtitle = numCards === 1 ? "Card" : "Cards";
 
     return (
-      <ListItem title={this.props.name} subtitle={`${numCards} ${subtitle}`} />
+      <ListItem
+        title={this.props.name}
+        subtitle={`${numCards} ${subtitle}`}
+        onPress={this.onPress}
+      />
     );
   };
 }
