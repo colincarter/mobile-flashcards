@@ -19,22 +19,10 @@ class Deck extends React.Component {
     const cards = this.props.cards[this.props.name] || [];
     const numCards = cards.length;
     const subtitle = numCards === 1 ? "Card" : "Cards";
-    return (
-      <ListItem title={this.props.name} subtitle={`${numCard} ${subtitle}`} />
-    );
 
-    // return (
-    //   <TouchableOpacity
-    //     style={styles.card}
-    //     onPress={this.onPress}
-    //     pointerEvents="auto"
-    //   >
-    //     <Text style={styles.cardName}>{this.props.name}</Text>
-    //     <Text style={styles.numCard}>
-    //       {numCards} {numCards == 1 ? "Card" : "Cards"}
-    //     </Text>
-    //   </TouchableOpacity>
-    // );
+    return (
+      <ListItem title={this.props.name} subtitle={`${numCards} ${subtitle}`} />
+    );
   };
 }
 

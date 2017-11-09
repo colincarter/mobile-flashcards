@@ -35,14 +35,6 @@ class Decks extends React.Component {
           keyExtractor={this.keyExtractor}
         />
       </List>
-
-      // <View style={styles.container}>
-      //   <FlatList
-      //     data={this.props.decks}
-      //     renderItem={this.renderDeck}
-      //     keyExtractor={this.keyExtractor}
-      //   />
-      // </View>
     );
   };
 }
