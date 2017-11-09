@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, Text, FlatList, StyleSheet } from "react-native";
+import { List, ListItem } from "react-native-elements";
+
 import { connect } from "react-redux";
 import Deck from "./Deck";
 
@@ -26,13 +28,21 @@ class Decks extends React.Component {
 
   render = () => {
     return (
-      <View style={styles.container}>
+      <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
         <FlatList
           data={this.props.decks}
           renderItem={this.renderDeck}
           keyExtractor={this.keyExtractor}
         />
-      </View>
+      </List>
+
+      // <View style={styles.container}>
+      //   <FlatList
+      //     data={this.props.decks}
+      //     renderItem={this.renderDeck}
+      //     keyExtractor={this.keyExtractor}
+      //   />
+      // </View>
     );
   };
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { ListItem } from "react-native-elements";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -17,19 +18,23 @@ class Deck extends React.Component {
   render = () => {
     const cards = this.props.cards[this.props.name] || [];
     const numCards = cards.length;
-
+    const subtitle = numCards === 1 ? "Card" : "Cards";
     return (
-      <TouchableOpacity
-        style={styles.card}
-        onPress={this.onPress}
-        pointerEvents="auto"
-      >
-        <Text style={styles.cardName}>{this.props.name}</Text>
-        <Text style={styles.numCard}>
-          {numCards} {numCards == 1 ? "Card" : "Cards"}
-        </Text>
-      </TouchableOpacity>
+      <ListItem title={this.props.name} subtitle={`${numCard} ${subtitle}`} />
     );
+
+    // return (
+    //   <TouchableOpacity
+    //     style={styles.card}
+    //     onPress={this.onPress}
+    //     pointerEvents="auto"
+    //   >
+    //     <Text style={styles.cardName}>{this.props.name}</Text>
+    //     <Text style={styles.numCard}>
+    //       {numCards} {numCards == 1 ? "Card" : "Cards"}
+    //     </Text>
+    //   </TouchableOpacity>
+    // );
   };
 }
 
