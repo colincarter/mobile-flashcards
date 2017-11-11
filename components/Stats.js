@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, Text } from "react-native";
+import { Card } from "react-native-elements";
 
 class Stats extends React.Component {
   static propTypes = {
@@ -11,8 +12,7 @@ class Stats extends React.Component {
 
   render = () => {
     return (
-      <View>
-        <Text>Stats</Text>
+      <Card title="Quiz Stats">
         <Text>
           Correct:{" "}
           {Math.round(this.props.correctCount / this.props.numCards * 100)}%
@@ -21,7 +21,7 @@ class Stats extends React.Component {
           Incorrect:{" "}
           {Math.round(this.props.incorrectCount / this.props.numCards * 100)}%
         </Text>
-      </View>
+      </Card>
     );
   };
 }
