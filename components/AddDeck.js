@@ -9,6 +9,11 @@ import {
   Platform,
   StyleSheet
 } from "react-native";
+import {
+  FormLabel,
+  FormInput,
+  FormValidationMessage
+} from "react-native-elements";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
@@ -42,7 +47,7 @@ class AddDeck extends React.Component {
     this.props.addDeck(this.state.text);
     new DeckStorage().saveDeckTitle(this.state.text);
     this.setState({ text: "" });
-    this._textInput.setNativeProps({ text: "" });
+    this._textInput.clearText();
     this.props.navigation.goBack(null);
   };
 
@@ -50,19 +55,18 @@ class AddDeck extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>What is the title of your new Deck?</Text>
-        <View style={styles.deckNameContainer}>
-          <TextInput
-            placeholder="Deck title"
+        <View>
+          <FormLabel>Deck Title</FormLabel>
+          <FormInput
+            placeholder="The title of your new deck"
             onChangeText={this.onChangeText}
             ref={component => (this._textInput = component)}
-            style={styles.deckName}
           />
         </View>
         <Button
           onPress={this.onButtonPress}
           title="Add Deck"
           disabled={this.state.text === ""}
-          style={styles.button}
         />
       </View>
     );
@@ -77,18 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center"
-  },
-  deckName: {
-    marginTop: 20,
-    textAlign: "left",
-    height: 20,
-    marginBottom: 20
-  },
-  deckNameContainer: {
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  button: {}
+  }
 });
 
 function mapDispatchToProps(dispatch) {

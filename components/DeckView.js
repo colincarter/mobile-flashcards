@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 class DeckView extends React.Component {
   static propTypes = {
@@ -52,6 +52,8 @@ class DeckView extends React.Component {
     );
   };
 }
+
+const styles = StyleSheet.create({});
 
 const mapStateToProps = ({ cards }) => {
   return {
