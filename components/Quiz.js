@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 import Stats from "./Stats";
+import { forestgreen } from "../constants/index";
 
 class Quiz extends React.Component {
   static navigationOptions = () => {
@@ -50,13 +51,13 @@ class Quiz extends React.Component {
 
   renderQuestionOrAnswer = card => {
     if (this.state.showAnswer) {
-      return <Text>{card.answer}</Text>;
+      return <Text style={styles.answer}>{card.answer}</Text>;
     }
 
     return (
       <View>
-        <Text>{card.question}</Text>
-        <Button title="answer" onPress={this.showAnswer} />
+        <Text style={styles.question}>{card.question}</Text>
+        <Button title="Show Answer" onPress={this.showAnswer} />
       </View>
     );
   };
@@ -78,9 +79,8 @@ class Quiz extends React.Component {
 
     return (
       <View>
-        <Text>
-          {currentCard + 1} / {numCards}
-        </Text>
+        <Text style={styles.progress}>{`Question ${currentCard +
+          1} of ${numCards}`}</Text>
         {this.renderQuestionOrAnswer(card)}
         <Button title="Correct" onPress={this.onPressCorrect} />
         <Button title="Incorrect" onPress={this.onPressInCorrect} />
@@ -88,6 +88,24 @@ class Quiz extends React.Component {
     );
   };
 }
+
+const styles = StyleSheet.create({
+  progress: {
+    fontSize: 13,
+    textAlign: "center"
+  },
+  question: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  answer: {
+    fontSize: 20,
+    color: forestgreen,
+    fontWeight: "bold",
+    textAlign: "center"
+  }
+});
 
 function mapStateToProps(state, props) {
   const { deckName } = props.navigation.state.params;
