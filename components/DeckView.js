@@ -38,8 +38,8 @@ class DeckView extends React.Component {
 
     return (
       <View>
-        <Text>{this.deckName}</Text>
-        <Text>
+        <Text style={styles.title}>{this.deckName}</Text>
+        <Text style={[styles.title, { fontSize: 13 }]}>
           {numCards} {numCards == 1 ? "Card" : "Cards"}
         </Text>
         <Button title="Add Card" onPress={this.addCard} />
@@ -53,7 +53,16 @@ class DeckView extends React.Component {
   };
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center"
+  }
+});
 
 const mapStateToProps = ({ cards }) => {
   return {
