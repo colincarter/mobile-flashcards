@@ -10,3 +10,4 @@ yarn install
 yarn start
 ```
 
+The application has been tested in the iOS Simulator and device
