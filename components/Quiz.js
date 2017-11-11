@@ -73,6 +73,8 @@ class Quiz extends React.Component {
           correctCount={correctCount}
           incorrectCount={incorrectCount}
           numCards={numCards}
+          navigation={this.props.navigation}
+          deckName={this.deckName}
         />
       );
     }
