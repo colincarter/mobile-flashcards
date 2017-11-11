@@ -15,7 +15,11 @@ class Stats extends React.Component {
     this.props.navigation.navigate("Quiz", { deckName: this.props.deckName });
   };
 
-  backToDeck = () => {};
+  backToDeck = () => {
+    this.props.navigation.navigate("DeckView", {
+      deckName: this.props.deckName
+    });
+  };
 
   render = () => {
     return (
