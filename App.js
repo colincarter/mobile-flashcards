@@ -15,8 +15,6 @@ import configureStore from "./store/configureStore";
 import defaultState from "./store/defaultState";
 import { addDeck, addCard } from "./actions";
 
-import "./ReactotronConfig";
-
 const Tabs = TabNavigator({
   Decks: {
     screen: Decks
