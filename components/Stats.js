@@ -14,8 +14,15 @@ class Stats extends React.Component {
 
   restartQuiz = () => {
     const navigationAction = NavigationActions.reset({
-      index: 0,
+      index: 2,
       actions: [
+        NavigationActions.navigate({
+          routeName: "Home"
+        }),
+        NavigationActions.navigate({
+          routeName: "DeckView",
+          params: { deckName: this.props.deckName }
+        }),
         NavigationActions.navigate({
           routeName: "Quiz",
           params: { deckName: this.props.deckName }
@@ -27,8 +34,11 @@ class Stats extends React.Component {
 
   backToDeck = () => {
     const navigationActions = NavigationActions.reset({
-      index: 0,
+      index: 1,
       actions: [
+        NavigationActions.navigate({
+          routeName: "Home"
+        }),
         NavigationActions.navigate({
           routeName: "DeckView",
           params: { deckName: this.props.deckName }
