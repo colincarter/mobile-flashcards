@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { View, Text } from "react-native";
 import { Button, Card } from "react-native-elements";
 import { primary, secondary } from "../constants";
+import { NavigationActions } from "react-navigation";
 
 class Stats extends React.Component {
   static propTypes = {
@@ -12,13 +13,29 @@ class Stats extends React.Component {
   };
 
   restartQuiz = () => {
-    this.props.navigation.navigate("Quiz", { deckName: this.props.deckName });
+    const navigationAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: "Quiz",
+          params: { deckName: this.props.deckName }
+        })
+      ]
+    });
+    this.props.navigation.dispatch(navigationAction);
   };
 
   backToDeck = () => {
-    this.props.navigation.navigate("DeckView", {
-      deckName: this.props.deckName
+    const navigationActions = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: "DeckView",
+          params: { deckName: this.props.deckName }
+        })
+      ]
     });
+    this.props.navigation.dispatch(navigationActions);
   };
 
   render = () => {
