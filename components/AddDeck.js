@@ -5,16 +5,16 @@ import {
   Text,
   TextInput,
   AsyncStorage,
-  Button,
   Platform,
   StyleSheet
 } from "react-native";
-import { FormLabel, FormInput } from "react-native-elements";
+import { Button, FormLabel, FormInput } from "react-native-elements";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
 import DeckStorage from "../lib/storage";
 import { Ionicons } from "@expo/vector-icons";
+import { primary } from "../constants";
 
 class AddDeck extends React.Component {
   static propTypes = {
@@ -60,9 +60,11 @@ class AddDeck extends React.Component {
           />
         </View>
         <Button
+          raised
           onPress={this.onButtonPress}
           title="Add Deck"
           disabled={this.state.text === ""}
+          backgroundColor={primary}
         />
       </View>
     );

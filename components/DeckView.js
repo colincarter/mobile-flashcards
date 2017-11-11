@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
+import { primary, secondary } from "../constants";
 
 class DeckView extends React.Component {
   static propTypes = {
@@ -42,11 +44,17 @@ class DeckView extends React.Component {
         <Text style={[styles.title, { fontSize: 13 }]}>
           {numCards} {numCards == 1 ? "Card" : "Cards"}
         </Text>
-        <Button title="Add Card" onPress={this.addCard} />
+        <Button
+          title="Add Card"
+          onPress={this.addCard}
+          backgroundColor={primary}
+        />
+        <Text> </Text>
         <Button
           title="Start Quiz"
           onPress={this.startQuiz}
           disabled={numCards == 0}
+          backgroundColor={secondary}
         />
       </View>
     );
