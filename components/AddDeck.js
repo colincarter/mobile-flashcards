@@ -9,11 +9,7 @@ import {
   Platform,
   StyleSheet
 } from "react-native";
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage
-} from "react-native-elements";
+import { FormLabel, FormInput } from "react-native-elements";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
