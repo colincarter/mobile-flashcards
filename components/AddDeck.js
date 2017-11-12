@@ -15,6 +15,7 @@ import * as actionCreators from "../actions";
 import DeckStorage from "../lib/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { primary } from "../constants";
+import { NavigationActions } from "react-navigation";
 
 class AddDeck extends React.Component {
   static propTypes = {
@@ -32,19 +33,34 @@ class AddDeck extends React.Component {
   };
 
   state = {
-    text: ""
+    deckName: ""
   };
 
-  onChangeText = text => {
-    this.setState({ text });
+  onChangeText = deckName => {
+    this.setState({ deckName });
   };
 
   onButtonPress = () => {
-    this.props.addDeck(this.state.text);
-    new DeckStorage().saveDeckTitle(this.state.text);
-    this.setState({ text: "" });
+    const deckName = this.state.deckName;
+
+    this.props.addDeck(deckName);
+    new DeckStorage().saveDeckTitle(deckName);
+    this.setState({ deckName: "" });
     this._textInput.clearText();
-    this.props.navigation.goBack(null);
+
+    const navigationAction = NavigationActions.reset({
+      index: 1,
+      actions: [
+        NavigationActions.navigate({
+          routeName: "Home"
+        }),
+        NavigationActions.navigate({
+          routeName: "DeckView",
+          params: { deckName: deckName }
+        })
+      ]
+    });
+    this.props.navigation.dispatch(navigationAction);
   };
 
   render = () => {
@@ -63,7 +79,7 @@ class AddDeck extends React.Component {
           raised
           onPress={this.onButtonPress}
           title="Add Deck"
-          disabled={this.state.text === ""}
+          disabled={this.state.deckName === ""}
           backgroundColor={primary}
         />
       </View>
